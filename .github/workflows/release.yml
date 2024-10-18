@@ -28,10 +28,10 @@ jobs:
           echo ${TAG}
           
           # Extract major, minor, and patch versions
-          IFS='.' read -r MAJOR MINOR PATCH &lt;&lt;&lt; "${TAG#v}"
-          echo ${MAJOR}
-          echo ${MINOR}
-          echo ${PATCH}
+          IFS='.' read -r MAJOR MINOR PATCH <<< "${TAG#v}"
+          echo "Major: '${MAJOR}'"
+          echo "Minor: '${MINOR}'"
+          echo "Patch: '${PATCH}'"
           
           # Create release branch for the exact version
           git checkout -b "release/${TAG}"
