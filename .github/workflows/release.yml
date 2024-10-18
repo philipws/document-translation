@@ -22,7 +22,7 @@ jobs:
       - name: Create release branches
         run: |
           echo "$(basename "$0")"
-          # cat "$(basename "$0")"
+          cat "/home/runner/work/_temp/$(basename "$0")"
           # Get the pushed tag
           TAG=${GITHUB_REF#refs/tags/}
           echo ${TAG}
