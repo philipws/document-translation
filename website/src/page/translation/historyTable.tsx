@@ -80,7 +80,7 @@ export default function HistoryTable() {
 
         /* formatStatus */
         const formatStatus = (item: Item) => {
-                const status = item.jobStatus.toUpperCase();
+                const status = item.jobStatus.trim().toUpperCase();
 
                 if (status === "UPLOADED") {
                         return (
@@ -198,7 +198,7 @@ export default function HistoryTable() {
                                                 filteringText.toLowerCase()
                                         );
                                 }
-                                return !hideExpired || item.jobStatus.toUpperCase() !== "EXPIRED";
+                                return !hideExpired || item.jobStatus.trim().toUpperCase() !== "EXPIRED";
                         })}
                         loadingText={t("generic_loading")}
                         loading={loading}
