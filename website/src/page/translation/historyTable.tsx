@@ -193,12 +193,9 @@ export default function HistoryTable() {
                         ]}
                         stickyColumns={{ first: 0, last: 1 }}
                         items={jobs.filter((item) => {
-                                if (filteringText) {
-                                        return (item.jobName?.toLowerCase() ?? "").includes(
-                                                filteringText.toLowerCase()
-                                        );
-                                }
-                                return !hideExpired || item.jobStatus.trim().toUpperCase() !== "EXPIRED";
+                                const matchesFilter = !filteringText || (item.jobName?.toLowerCase() ?? "").includes(filteringText.toLowerCase());
+                                const matchesExpiredToggle = !hideExpired || item.jobStatus.trim().toUpperCase() !== "EXPIRED";
+                                return matchesFilter && matchesExpiredToggle;
                         })}
                         loadingText={t("generic_loading")}
                         loading={loading}
